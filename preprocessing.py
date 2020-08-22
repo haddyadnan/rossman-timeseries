@@ -80,19 +80,20 @@ class preprocess():
     if dim1:
       try:
         #data = np.array(data)
-        df = pd.DataFrame([data], columns=cols)
+        df = pd.DataFrame([data], columns=self.cols)
         return df
         logging.info('1D value transformed to dataframe')
       except:
         logging.warning("Error from the input")
-        message()
+        #message()
+        print('There is error with the input values')
     else:
         try:
-            df = pd.DataFrame([data], columns=cols)
-            message()
+            df = pd.DataFrame([data], columns=self.cols)
         except:
             logging.warning("Error from the input")
-            message()
+            #message()
+            print('There is error with the input values')
 
   def extract_features(self, X = None, for_predict = None):
 
@@ -138,7 +139,8 @@ class preprocess():
         logging.info("Turn values passed to a dataframe")
       except:
         logging.warning('There is a problem in the values passed')
-        message
+        #message
+        print('There is error with the input values')
 
     # if X.columns[0] == 'Id':
     #   X.drop(['Id'], axis = 1)
@@ -146,7 +148,7 @@ class preprocess():
       self.X['Date'] = pd.to_datetime(self.X['Date'])
     except:
       logging.warning('Check date format - yyyy-mm-dd')
-      message
+      #message
 
 
     #New features
